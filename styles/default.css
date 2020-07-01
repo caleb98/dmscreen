@@ -1,0 +1,103 @@
+/* Store color vars in root */
+
+:root {
+    --background-color: #332C29;
+    --font-color: #F8E8A2;
+    --frame-header-background-color: #872231;
+    --frame-header-font-color: #e8898e;
+    --frame-background-color: #441a20;
+    --frame-subheader-font-color: #ead931;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #515151;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #212121;
+}
+
+body {
+    color: var(--font-color) !important;
+    background-color: var(--background-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+#page-container {
+    padding: 12px 0px;
+}
+
+.content-panel-container {
+    padding: 0px 0px 12px 0px;
+}
+
+.content-panel-header {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--frame-header-font-color);
+    background-color: var(--frame-header-background-color);
+    border: 0;
+    padding: 0;
+}
+
+.content-panel-header[aria-expanded="false"]::after {
+    content: '+';
+    font-size: 24px;
+    color: var(--font-color);
+    float: right;
+    margin-right: 12px;
+}
+
+.content-panel-header[aria-expanded="true"]::after {
+    content: '-';
+    font-size: 24px;
+    color: var(--font-color);
+    float: right;
+    margin-right: 12px;
+}
+
+.content-panel-header:focus {
+    outline: none;
+}
+
+.content-panel-inner {
+    background-color: var(--frame-background-color);
+    border-style: solid;
+    border-color: var(--frame-header-background-color);
+    border-width: 0px 2px 2px 2px;
+}
+
+.content-panel-content {
+    padding: 8px;
+}
+
+.table-colors {
+    color: var(--font-color);
+}
+
+.table td,
+.table th {
+    border-color: var(--frame-header-background-color);
+}
+
+.table thead th {
+    border-top: 0;
+    border-color: var(--frame-header-background-color);
+}
+
+.content-panel-content h1,
+.content-panel-content h2,
+.content-panel-content h3,
+.content-panel-content h4,
+.content-panel-content h5,
+.content-panel-content h6 {
+    color: var(--frame-subheader-font-color);
+    font-weight: 700;
+}

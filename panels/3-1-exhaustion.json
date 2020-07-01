@@ -1,0 +1,4 @@
+{
+    "name": "Exhaustion",
+    "html": "<table class=\"table table-colors\"> <thead> <th scope=\"col\">Level</th> <th scope=\"col\">Effect</th> </thead> <tbody> <tr> <th scope=\"row\">1</th> <td>Disadvantage on ability checks</td></tr><tr> <th scope=\"row\">2</th> <td>Speed halved</td></tr><tr> <th scope=\"row\">3</th> <td>Disadvantage on attack rolls and saving throws</td></tr><tr> <th scope=\"row\">4</th> <td>Hit point maximum halved</td></tr><tr> <th scope=\"row\">5</th> <td>Speed reduced to 0</td></tr><tr> <th scope=\"row\">6</th> <td>Death</td></tr></tbody></table><p>If an exhausted creature suffers another effect that would cause it to be exhausted, add the total levels of exhaustion indicated by the effect to the current exhaustion level.</p><p>Finishing a long rest reduces a creature's exhaustion level by 1, provided they have had a meal.</p>"
+}

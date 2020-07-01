@@ -1,0 +1,4 @@
+{
+    "name": "Combat Actions",
+    "html": "<h4>Attack</h4><p>Swing with a weapon, shoot a bow, throw a punch, etc.</p><h4>Cast a Spell</h4><p></p><h4>Dash</h4><p>Double your speed for this turn, including any modifiers.</p><h4>Disengage</h4><p>Your movement doesn't provoke attacks of opportunity for this turn.</p><h4>Dodge</h4><p>Until the start of your next turn, attacks against you have disadvantage if you can see the attacker. Dexterity saves are made at advantage.</p><h4>Help</h4><p>Aid a creature in a task, granting them advantage on the next ability check to complete that task.</p><h4>Hide</h4><p>Make a Stealth check to attempt to hide.</p><h4>Ready</h4><p>Prepare an action to do upon a decided trigger (ie. activating a trap when an enemy walks through it.) The prepared action takes the place of the creature's reaction for this turn.</p><h4>Use an Object</h4>"
+}
