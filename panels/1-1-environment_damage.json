@@ -1,4 +1,4 @@
 {
     "name": "Environment Damage",
-    "html": "<h4>Falling</h4><p>A creature takes 1d6 for every 10 feet fallen, up to a maximum of 20d6.</p><h4>Suffocating</h4><p>A creature can hold its breath for a number of minutes equal to its 1 + CON modifier (minimum 30 seconds.)</p><p>If a creature runs out of breath, it can survive for a number of rounds equal to its CON modifier (minimum 1 round.) After these rounds, the creature drops to 0 HP and is dying.</p><p>A creature dying this way cannot regain HP or be stabilized until it can breathe again.</p>"
+    "html": "<h5>Falling</h5><p>A creature takes 1d6 for every 10 feet fallen, up to a maximum of 20d6.</p><h5>Suffocating</h5><p>A creature can hold its breath for a number of minutes equal to its 1 + CON modifier (minimum 30 seconds.)</p><p>If a creature runs out of breath, it can survive for a number of rounds equal to its CON modifier (minimum 1 round.) After these rounds, the creature drops to 0 HP and is dying.</p><p>A creature dying this way cannot regain HP or be stabilized until it can breathe again.</p>"
 }

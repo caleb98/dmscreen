@@ -95,8 +95,8 @@ body {
 .content-panel-content h1,
 .content-panel-content h2,
 .content-panel-content h3,
-.content-panel-content h4,
 .content-panel-content h5,
+.content-panel-content h6,
 .content-panel-content h6 {
     color: var(--frame-subheader-font-color);
     font-weight: 700;
