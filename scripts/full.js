@@ -70,11 +70,20 @@ $(document).ready(function() {
 
 });
 
+//Close panel selection windows if a click occurs outside of one that is open
 $(window).click(function(event) {
     if (!event.target.matches(".panel-select-button")) {
         closePanelSwapDropdowns();
     }
-})
+});
+
+$(document).keydown(function(event) {
+    var sb = $(".searchbar");
+    if (event.which === 27) {
+        sb.val("");
+    }
+    sb.focus();
+});
 
 function closePanelSwapDropdowns() {
     $(".panel-select-content").removeClass("show");

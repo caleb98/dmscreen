@@ -29,6 +29,11 @@
 </head>
 <body>
 <div class="container-fluid">
+<div class="row">
+    <div class="col searchbar-container">
+        <input class="form-control searchbar" type="text" placeholder="Search..."/>
+    </div>
+</div>
 <div class="row" id="page-container">
 
 <?php

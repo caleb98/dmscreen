@@ -136,3 +136,22 @@ body {
     color: var(--frame-subheader-font-color);
     font-weight: 700;
 }
+
+.searchbar {
+    background-color: var(--frame-background-color);
+    margin-top: 12px;
+    font-size: 20px;
+    color: var(--frame-header-font-color);
+    border-color: var(--frame-header-background-color);
+}
+
+.searchbar:focus {
+    background-color: var(--frame-background-color);
+    border: 1px solid var(--frame-header-font-color);
+    color: var(--frame-header-font-color);
+    box-shadow: 0px 0px 5px var(--frame-header-font-color);
+}
+
+.searchbar::placeholder {
+    color: var(--frame-header-background-color);
+}
