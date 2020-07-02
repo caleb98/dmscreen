@@ -1,3 +1,5 @@
+<?php declare(strict_types=1); ?>
+
 <!doctype html>
 <html>
 <head>
@@ -31,68 +33,75 @@
 
 <?php
 
+function createPanelHTML(string $id, string $name, string $inner) : string {
+    return
+    "<div id=\"{$id}-panel\" class=\"container-fluid content-panel-container\" content-panel-name=\"{$name}\">
+        <button class=\"content-panel-header container-fluid\" type=\"button\">
+            <div id=\"{$id}-panel-select-button\" class=\"panel-select-button\">▼</div>
+            <div id=\"{$id}-panel-select-content\" class=\"panel-select-content\">
+            </div>
+            {$name}
+        </button>
+        <div class=\"content-panel-inner\">
+            <div class=\"content-panel-content\">{$inner}</div>
+        </div>
+    </div>";
+}
+
+$sqlServer = "localhost";
+$username = "root";
+$password = "choppywavesinsignificantmonkey-";
+$dbName = "dmscreen";
+
+$conn = new mysqli($sqlServer, $username, $password, $dbName);
+
+if($conn->connect_error) {
+    die("DB connection failed: " . $conn->connect_error);
+}
+
 //Read panels
-$panelsDir = "panels";
-$panels = scandir($panelsDir);
+$sql = "SELECT * FROM global_panels";
+$result = $conn->query($sql);
 
 //Loop through and load
-$column = 1;
-$col1 = [];
-$col2 = [];
-$col3 = [];
-for($i = 2; $i < count($panels); $i++) {
-    $pfileName = $panelsDir . "\\" . $panels[$i];
-    $pfile = fopen($pfileName, "r") or die("Error Loading Panels");
-    $json = fread($pfile, filesize($pfileName));
-    fclose($pfile);
+$column = 0;
+$cols = [[],[],[]];
+if($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        
+        $panelId = $row["id"];
+        $panelName = $row["name"];
+        $panelHTMLFile = $row["html_file"];
+        $panelFullPath = "panels/" . $panelHTMLFile;
 
-    $panelInfo = json_decode($json);
-    $panelName = $panelInfo->name;
-    $panelHTML = $panelInfo->html;
-    
-    $panel = 
-    '<button class="content-panel-header container-fluid" type="button">' .
-        $panelName .
-    '</button>
-    <div class="content-panel-inner">
-        <div class="content-panel-content">' . $panelHTML . '</div>
-    </div>';
+        //Read file html
+        $fileRef = fopen($panelFullPath, "r");
+        $html = fread($fileRef, filesize($panelFullPath));
 
-    switch($column) {
+        //Create full panel
+        $fullPanel = createPanelHTML($panelId, $panelName, $html);
 
-        case 1:
-            $col1[] = $panel;
-            $column = 2;
-            break;
-
-        case 2:
-            $col2[] = $panel;
-            $column = 3;
-            break;
-
-        case 3:
-            $col3[] = $panel;
-            $column = 1;
-            break;
+        $cols[$column][] = $fullPanel;
+        $column = ($column + 1) % 3;
 
     }
 }
 
 $col1HTML = '<div class="col-lg-4">';
-for($i = 0; $i < count($col1); $i++) {
-    $col1HTML .= "<div class=\"container-fluid content-panel-container\">{$col1[$i]}</div>";
+for($i = 0; $i < count($cols[0]); $i++) {
+    $col1HTML .= $cols[0][$i];
 }
 $col1HTML .= '</div>';
 
 $col2HTML = '<div class="col-lg-4">';
-for($i = 0; $i < count($col2); $i++) {
-    $col2HTML .= "<div class=\"container-fluid content-panel-container\">{$col2[$i]}</div>";
+for($i = 0; $i < count($cols[1]); $i++) {
+    $col2HTML .= $cols[1][$i];
 }
 $col2HTML .= '</div>';
 
 $col3HTML = '<div class="col-lg-4">';
-for($i = 0; $i < count($col3); $i++) {
-    $col3HTML .= "<div class=\"container-fluid content-panel-container\">{$col3[$i]}</div>";
+for($i = 0; $i < count($cols[2]); $i++) {
+    $col3HTML .= $cols[2][$i];
 }
 $col3HTML .= '</div>';
 
