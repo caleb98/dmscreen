@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); ?>
+<?php
+include "functions.php";
+?>
 
 <!doctype html>
 <html>
@@ -38,21 +40,6 @@
 
 <?php
 
-function createPanelHTML(string $id, string $name, string $inner) : string {
-    return
-    "<div id=\"{$id}-panel\" class=\"container-fluid content-panel-container\" content-panel-name=\"{$name}\">
-        <button class=\"content-panel-header container-fluid\" type=\"button\">
-            <div id=\"{$id}-panel-select-button\" class=\"panel-select-button\">▼</div>
-            <div id=\"{$id}-panel-select-content\" class=\"panel-select-content\">
-            </div>
-            {$name}
-        </button>
-        <div class=\"content-panel-inner\">
-            <div class=\"content-panel-content\">{$inner}</div>
-        </div>
-    </div>";
-}
-
 $sqlServer = "localhost";
 $username = "root";
 $password = "choppywavesinsignificantmonkey-";
@@ -73,18 +60,9 @@ $column = 0;
 $cols = [[],[],[]];
 if($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        
-        $panelId = $row["id"];
-        $panelName = $row["name"];
-        $panelHTMLFile = $row["html_file"];
-        $panelFullPath = "panels/" . $panelHTMLFile;
-
-        //Read file html
-        $fileRef = fopen($panelFullPath, "r");
-        $html = fread($fileRef, filesize($panelFullPath));
 
         //Create full panel
-        $fullPanel = createPanelHTML($panelId, $panelName, $html);
+        $fullPanel = createPanelHTML($row);
 
         $cols[$column][] = $fullPanel;
         $column = ($column + 1) % 3;
