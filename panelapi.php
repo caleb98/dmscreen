@@ -54,30 +54,8 @@ if($requestType == $PANEL_REQUEST_GET_PANEL) {
         die("Invalid panel name.");
     }
 
-    $previewHtml = createPanelHTML($panelObj);
-
-    $sql = $conn->prepare("
-        SELECT tag, priority
-        FROM global_panels 
-        INNER JOIN panel_tags ON global_panels.id = panel_tags.id
-        WHERE global_panels.name = ?
-    ");
-    $sql->bind_param("s", $requestedPanel);
-    $sql->execute();
-
-    $tags = [];
-
-    if($result = $sql->get_result()) {
-        while($row = $result->fetch_assoc()) {
-            $tags[] = (object) array(
-                "tag" => $row["tag"],
-                "priority" => $row["priority"]
-            );
-        }
-    }
-    else {
-        die("Error getting panel tags from database.");
-    }
+    $previewHtml = createPanelHTML($conn, $panelObj);
+    $tags = getTagsForPanelName($conn, $requestedPanel);
 
     $return = (object) array(
         "previewHtml" => $previewHtml,

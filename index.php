@@ -33,7 +33,7 @@ include "functions.php";
 <div class="container-fluid">
 <div class="row">
     <div class="col searchbar-container">
-        <input class="form-control searchbar" type="text" placeholder="Search..."/>
+        <input id="panel-searchbar" class="form-control searchbar" type="text" placeholder="Search..."/>
     </div>
 </div>
 <div class="row" id="page-container">
@@ -62,7 +62,7 @@ if($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 
         //Create full panel
-        $fullPanel = createPanelHTML($row);
+        $fullPanel = createPanelHTML($conn, $row);
 
         $cols[$column][] = $fullPanel;
         $column = ($column + 1) % 3;
@@ -70,19 +70,19 @@ if($result->num_rows > 0) {
     }
 }
 
-$col1HTML = '<div class="col-lg-4">';
+$col1HTML = '<div id="panel-column-1" class="col-lg-4">';
 for($i = 0; $i < count($cols[0]); $i++) {
     $col1HTML .= $cols[0][$i];
 }
 $col1HTML .= '</div>';
 
-$col2HTML = '<div class="col-lg-4">';
+$col2HTML = '<div id="panel-column-2" class="col-lg-4">';
 for($i = 0; $i < count($cols[1]); $i++) {
     $col2HTML .= $cols[1][$i];
 }
 $col2HTML .= '</div>';
 
-$col3HTML = '<div class="col-lg-4">';
+$col3HTML = '<div id="panel-column-3" class="col-lg-4">';
 for($i = 0; $i < count($cols[2]); $i++) {
     $col3HTML .= $cols[2][$i];
 }
