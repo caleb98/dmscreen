@@ -97,6 +97,13 @@ $(window).click(function(event) {
 });
 
 $(document).keydown(function(event) {
+    //See if anything is already focused so we don't pull typing from a different bar.
+    var focused = $(document.activeElement);
+    if (focused) {
+        return;
+    }
+
+
     var sb = $("#panel-searchbar");
     if (event.which === 27) {
         sb.val("");

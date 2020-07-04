@@ -139,21 +139,35 @@ body {
     font-weight: 700;
 }
 
-.searchbar {
-    background-color: var(--frame-background-color);
+#searchbar {
     margin-top: 12px;
+}
+
+.inputbar {
+    margin: 0;
+    background-color: var(--frame-background-color);
     font-size: 20px;
     color: var(--frame-header-font-color);
     border-color: var(--frame-header-background-color);
 }
 
-.searchbar:focus {
+.inputbar:focus {
     background-color: var(--frame-background-color);
     border: 1px solid var(--frame-header-font-color);
     color: var(--frame-header-font-color);
     box-shadow: 0px 0px 5px var(--frame-header-font-color);
 }
 
-.searchbar::placeholder {
+.inputbar::placeholder {
     color: var(--frame-header-background-color);
+}
+
+.btn-dmscreen {
+    background-color: var(--frame-subheader-font-color);
+    border: inset 1px rgba(0, 0, 0, 0.5)
+}
+
+.expand {
+    width: 100%;
+    height: 100%;
 }

@@ -37,7 +37,7 @@
                 </div>
                 <div class="content-panel-inner">
                     <div class="content-panel-content">
-                        <input id="tag-input" class="form-control searchbar" style="font-size: 16px;" type="text" placeholder="add tag"/>
+                        <input id="tag-input" class="form-control inputbar" style="font-size: 16px;" type="text" placeholder="add tag"/>
                         <div id="tags-list" style="margin-top: 12px;">
                         </div>
                     </div>
